@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="jQuery.ajaxForm2.js"></script>
+</head>
+<body>
+<form method="post" action="settings.json">
+    <table>
+        <tr>
+            <td><label for="distance_input">Дистанция</label></td>
+            <td><input type="number" name="distance" id="distance_input"></td>
+            <td><span id="distance_value"></span></td>
+        </tr>
+        <tr>
+            <td><label for="beep_input">Звук</label></td>
+            <td><input type="checkbox" name="beep" id="beep_input" value="1"></td>
+            <td><span id="beep_value"></span></td>
+        </tr>
+        <tr>
+            <td><label for="mod_input">Режим</label></td>
+            <td><select name="mod" id="mod_input">
+                <option value="1">Чебурашка</option>
+                <option value="2">Крокодил Гена</option>
+                <option value="3">Шапокляк</option>
+                <option value="4">Крыса Лариса</option>
+            </select></td>
+            <td><span id="mod_value"></span></td>
+        </tr>
+    </table>
+    <input type="submit" name="" value="Отправить">
+    <input type="reset" name="" value="Обновить">
+</form>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        var data = $('form').formAjax2().getFormData();
+        //console.info(data);
+    })
+</script>
+</body>
+</html>
