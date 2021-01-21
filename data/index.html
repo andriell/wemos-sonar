@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css" media="all" />
+    <link rel="stylesheet" href="style.css" media="all"/>
     <script src="jquery-3.5.1.min.js"></script>
     <script src="jQuery.ajaxForm2.js"></script>
 </head>
 <body>
+<div style="width: 100%; text-align: center;">
+    <img id="img_sonar" src="sonar.svg" width="384" height="192" alt="sonar">
+</div>
 <form method="post" action="settings.json" class="form-style-1">
     <table>
         <tr>
@@ -41,8 +44,10 @@
 
 <script type="text/javascript">
     jQuery(function ($) {
-        var data = $('form').formAjax2().getFormData();
-        //console.info(data);
+        setInterval(function () {
+            $("#img_sonar").attr("src", "sonar.svg?" + new Date().getTime());
+        }, 1000);
+        $('form').formAjax2();
     })
 </script>
 </body>
