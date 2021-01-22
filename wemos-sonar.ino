@@ -78,7 +78,7 @@ void loop() {
     delay(1000);
     laserOn();
     if (alarmCount >= 5) {
-      triggerFire();
+      triggerFire(targetGet());
       rotationSetPosition(targetGetStart());
       targetReset();
       alarmCount = 0;

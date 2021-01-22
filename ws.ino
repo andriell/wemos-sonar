@@ -12,6 +12,8 @@ void wsSetup() {
 
   server.on("/sonar.svg", ws_svg);
   server.on("/sonar.txt", ws_svgTxt);
+  server.on("/fire", HTTP_POST, ws_fire);
+  server.on("/angle", HTTP_POST, ws_angle);
   server.on("/settings.json", HTTP_POST, ws_settings_post);
   server.onNotFound(ws_default);
 
@@ -21,6 +23,17 @@ void wsSetup() {
 
 void wsLoop() {
   server.handleClient();
+}
+
+void ws_angle() {
+  int a = server.arg("a").toInt();
+  rotationSetPosition(a);
+  server.send(200, "application/json", "{'sucsess': true}");
+}
+
+void ws_fire() {
+  triggerFire(rotationPosition());
+  server.send(200, "application/json", "{'sucsess': true}");
 }
 
 void ws_settings_post() {

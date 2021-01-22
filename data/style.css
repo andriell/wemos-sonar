@@ -14,9 +14,9 @@
 
 .form-style-1 label {
     margin: 0 0 3px 0;
-    padding: 0px;
-    display: block;
-    font-weight: bold;
+    padding: 0;
+    /*display: block;*/
+    /*font-weight: bold;*/
 }
 
 .form-style-1 input[type=text],
@@ -109,4 +109,8 @@ select {
 
 .form-style-1 td {
     padding: 5px;
+}
+
+.hidden {
+    display: none;
 }
