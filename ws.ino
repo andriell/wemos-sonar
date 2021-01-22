@@ -11,6 +11,7 @@ void wsSetup() {
   delay(100);
 
   server.on("/sonar.svg", ws_svg);
+  server.on("/sonar.txt", ws_svgTxt);
   server.on("/settings.json", HTTP_POST, ws_settings_post);
   server.onNotFound(ws_default);
 
@@ -30,18 +31,11 @@ void ws_settings_post() {
 }
 
 void ws_svg() {
-  String r = "<svg width='128' height='64' xmlns='http://www.w3.org/2000/svg'>";
-  r += "<rect width='100%' height='100%' fill='black' stroke='none' />";
-  r += "<polyline points='64 64 0 0' stroke='white' stroke-width='1' fill='none' />";
-  r += "<circle cx='64' cy='64' r='50' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
-  r += "<circle cx='64' cy='64' r='25' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
-  r += "<polyline points='0 20 10 10 16 10 32 15 33 50 34 20 35 15 40 10 50 20' stroke='white' stroke-width='1' fill='none' />";
-  r += "<rect width='25' height='8' fill='black' stroke='none' />";
-  r += "<text x='0' y='8' fill='white' font-size='8' font-family='Arial'>123.56</text>";
-  r += "<rect x='108' width='25' height='8' fill='black' stroke='none' />";
-  r += "<text x='108' y='8' fill='white' font-size='8' font-family='Arial'>100%</text>";
-  r += "</svg>";
-  server.send(200, "image/svg+xml", r);
+  server.send(200, "image/svg+xml", displaySvg());
+}
+
+void ws_svgTxt() {
+  server.send(200, "text/plain", displaySvg());
 }
 
 void ws_default() {

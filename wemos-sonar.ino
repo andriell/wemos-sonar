@@ -21,6 +21,20 @@
 #define WEMOS_TX     1
 #define WEMOS_RX     3
 
+struct Settings {
+  int mode; // m
+  int rotationMin; // rm
+  int rotationMax; // rx
+  int rotationStep; // rs
+  int beepMode; // bm
+  int laserMode; // lm
+  float distanceDivider; // dd
+  float securityPerimeter; // sp
+  int minimalTargeSize; // mts
+};
+
+Settings s6s;
+
 void setup() {
   wemosSetup();
   dbgSetup();

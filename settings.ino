@@ -1,19 +1,5 @@
 #define SETTINGS_SIZE 512
 
-struct Settings {
-  int mode; // m
-  int rotationMin; // rm
-  int rotationMax; // rx
-  int rotationStep; // rs
-  int beepMode; // bm
-  int laserMode; // lm
-  float distanceDivider; // dd
-  float securityPerimeter; // sp
-  int minimalTargeSize; // mts
-};
-
-Settings s6s;
-
 void settingsSetup() {
   settingsLoadFile();
   //settingsSave();
@@ -108,8 +94,4 @@ void settingsLoadString(String jsonString) {
   } else {
     s6s.minimalTargeSize = 5;
   }
-}
-
-struct Settings settings() {
-  return s6s;
 }

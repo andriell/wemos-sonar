@@ -59,6 +59,33 @@ void displayLoop() {
   display.display();
 }
 
+String displaySvg() {
+  int x, y, p;
+  String r = "<svg width='128' height='64' xmlns='http://www.w3.org/2000/svg'>";
+  r += "<rect width='100%' height='100%' fill='black' stroke='none' />";
+  p = rotationPosition();
+  x = round(64.0f + cosArray[p] * 64.0f);
+  y = round(64.0f - sinArray[p] * 64.0f);
+  r += "<polyline points='64 64 " + String(x) + " " + String(y) + "' stroke='white' stroke-width='1' fill='none' />";
+  r += "<circle cx='64' cy='64' r='50' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
+  r += "<circle cx='64' cy='64' r='25' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
+  r += "<polyline points='";
+  for (int i = 0; i <= 180; i++) {
+    if (distanceArray[i] > 0) {
+      x = round(64.0f + cosArray[i] * distanceArray[i] / CONFIG_DISTANCE_DIVIDER);
+      y = round(64.0f - sinArray[i] * distanceArray[i] / CONFIG_DISTANCE_DIVIDER);
+      r += String(x) + " " + String(y) + " ";
+    }
+  }
+  r += "' stroke='white' stroke-width='1' fill='none' />";
+  r += "<rect width='25' height='8' fill='black' stroke='none' />";
+  r += "<text x='0' y='8' fill='white' font-size='8' font-family='Arial'>" + String(sonarDistance()) + "</text>";
+  r += "<rect x='108' width='25' height='8' fill='black' stroke='none' />";
+  r += "<text x='108' y='8' fill='white' font-size='8' font-family='Arial'>" + String(liionP()) + "%</text>";
+  r += "</svg>";
+  return r;
+}
+
 int displayLogPosition = 0;
 
 // Вывод строчки лога на экран
