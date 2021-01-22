@@ -3,6 +3,7 @@
 #include <FS.h>
 #include <Wire.h>
 #include "SH1106Wire.h" // ESP8266 and ESP32 OLED driver for SSD1306 displays
+#include <ArduinoJson.h> // ArduinoJson
 #include <Servo.h>
 #include "const.h"
 #include "config.h"
@@ -24,6 +25,10 @@ void setup() {
   wemosSetup();
   dbgSetup();
   dbgLn(1, "Setup");
+  if (!SPIFFS.begin()) {
+    dbgLn(1, "An Error has occurred while mounting SPIFFS");
+    return;
+  }
   beepSetup();
   ledSetup();
   liionSetup();
@@ -33,6 +38,7 @@ void setup() {
   laserSetup();
   displaySetup();
   targetSetup();
+  settingsSetup();
   wsSetup();
   laserOn();
 }
