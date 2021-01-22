@@ -81,7 +81,7 @@ void settingsLoadString(String jsonString) {
   if (doc.containsKey("rs")) {
     s6s.rotationStep = doc["rs"];
   } else {
-    s6s.rotationStep = 1;
+    s6s.rotationStep = 50;
   }
   if (doc.containsKey("bm")) {
     s6s.beepMode = doc["bm"];

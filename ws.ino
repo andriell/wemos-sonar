@@ -81,5 +81,6 @@ String wsContentType(String filename){
   else if(filename.endsWith(".zip")) return "application/x-zip";
   else if(filename.endsWith(".gz")) return "application/x-gzip";
   else if(filename.endsWith(".svg")) return "image/svg+xml";
+  else if(filename.endsWith(".json")) return "application/json";
   return "text/plain";
 }

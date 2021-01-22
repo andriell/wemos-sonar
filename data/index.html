@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sonar</title>
     <link rel="stylesheet" href="style.css" media="all"/>
     <script src="jquery-3.5.1.min.js"></script>
     <script src="jQuery.ajaxForm2.js"></script>
@@ -14,25 +14,62 @@
 <form method="post" action="settings.json" class="form-style-1">
     <table>
         <tr>
-            <td><label for="distance_input">Дистанция</label></td>
-            <td><input type="number" name="distance" id="distance_input"></td>
-            <td><span id="distance_value"></span></td>
-        </tr>
-        <tr>
-            <td><label for="beep_input">Звук</label></td>
-            <td><input type="checkbox" name="beep" id="beep_input" value="1"></td>
-            <td><span id="beep_value"></span></td>
-        </tr>
-        <tr>
-            <td><label for="mod_input">Режим</label></td>
-            <td><select name="mod" id="mod_input">
-                <option value="1">Чебурашка</option>
-                <option value="2">Крокодил Гена</option>
-                <option value="3">Шапокляк</option>
-                <option value="4">Крыса Лариса</option>
+            <td><label for="m_input">Режим</label></td>
+            <td><select name="m" id="m_input">
+                <option value="0">Выключено</option>
+                <option value="1">Сканирование</option>
+                <option value="2">Охрана</option>
+                <option value="3">Стрельба</option>
             </select></td>
-            <td><span id="mod_value"></span></td>
+            <td><span id="m_value"></span></td>
         </tr>
+        <tr>
+            <td><label for="rm_input">Минимальный угол</label></td>
+            <td><input type="number" name="rm" id="rm_input" min="0" max="180"></td>
+            <td><span id="rm_value"></span></td>
+        </tr>
+        <tr>
+            <td><label for="rx_input">Максимальный угол</label></td>
+            <td><input type="number" name="rx" id="rx_input" min="0" max="180"></td>
+            <td><span id="rx_value"></span></td>
+        </tr>
+        <tr>
+            <td><label for="rs_input">Пауза между сканированиями (мс)</label></td>
+            <td><input type="number" name="rs" id="rs_input" min="0" max="1000"></td>
+            <td><span id="rs_value"></span></td>
+        </tr>
+        <tr>
+            <td><label for="bm_input">Звук</label></td>
+            <td><select name="bm" id="bm_input">
+                <option value="0">Выключено</option>
+                <option value="1">Включено</option>
+            </select></td>
+            <td><span id="bm_value"></span></td>
+        </tr>
+        <tr>
+            <td><label for="lm_input">Лазер</label></td>
+            <td><select name="lm" id="lm_input">
+                <option value="0">Выключено</option>
+                <option value="1">Включено</option>
+            </select></td>
+            <td><span id="lm_value"></span></td>
+        </tr>
+        <tr>
+            <td><label for="dd_input">Масштаб (см/px)</label></td>
+            <td><input type="number" name="dd" id="dd_input" min="0" max="100"></td>
+            <td><span id="dd_value"></span></td>
+        </tr>
+        <tr>
+            <td><label for="sp_input">Охранная зона (см)</label></td>
+            <td><input type="number" name="sp" id="sp_input" min="10" max="1000"></td>
+            <td><span id="sp_value"></span></td>
+        </tr>
+        <tr>
+            <td><label for="mts_input">Минимальный размер цели</label></td>
+            <td><input type="number" name="mts" id="mts_input" min="1" max="180"></td>
+            <td><span id="mts_value"></span></td>
+        </tr>
+
         <tr>
             <td colspan="3" style="text-align: right">
                 <input type="reset" name="" value="Обновить">
