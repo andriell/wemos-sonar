@@ -8,7 +8,7 @@ float cosArray[181];
 
 void displaySetup() {
   for (int i = 0; i <= 180; i++) {
-    distanceArray[i] = -1L;
+    distanceArray[i] = -1.0f;
     sinArray[i] = sin(M_PI / 180.0f * float(i));
     cosArray[i] = cos(M_PI / 180.0f * float(i));
   }
@@ -22,14 +22,29 @@ void displayLoop() {
   distanceArray[i] = sonarDistance();
 
   display.clear();
-  int x, y, prevX, prevY;
+  int x, y;
+  int prevX = -1; 
+  int prevY = -1;
   for (int i = 0; i <= 180; i++) {
     if (distanceArray[i] > 0) {
       x = round(64.0f + cosArray[i] * distanceArray[i] / s6s.distanceDivider);
       y = round(64.0f - sinArray[i] * distanceArray[i] / s6s.distanceDivider);
+      if (x < 0) {
+        x = 0;
+      }
+      if (x > 128) {
+        x = 128;
+      }
+      if (y < 0) {
+        y = 0;
+      }
+      if (y > 64) {
+        y = 64;
+      }
       //if (!(y < 10 && (x < 20 && x > 110)) && prevX > 0 && prevY > 0) {
-      display.drawLine(prevX, prevY, x, y);
-      //}
+      if (prevX > -1 && prevY > -1) {
+        display.drawLine(prevX, prevY, x, y);
+      }
       prevX = x;
       prevY = y;
     }
