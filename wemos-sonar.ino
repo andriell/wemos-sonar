@@ -81,7 +81,7 @@ void loop() {
     laserOn();
     if (alarmCount >= 5) {
       triggerFire(targetGet());
-      rotationSetPosition(targetGetStart());
+      rotationSetPosition(targetGetEnd());
       targetReset();
       alarmCount = 0;
     }

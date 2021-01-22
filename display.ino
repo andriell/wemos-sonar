@@ -28,7 +28,7 @@ void displayLoop() {
       x = round(64.0f + cosArray[i] * distanceArray[i] / s6s.distanceDivider);
       y = round(64.0f - sinArray[i] * distanceArray[i] / s6s.distanceDivider);
       //if (!(y < 10 && (x < 20 && x > 110)) && prevX > 0 && prevY > 0) {
-        display.drawLine(prevX, prevY, x, y);
+      display.drawLine(prevX, prevY, x, y);
       //}
       prevX = x;
       prevY = y;
@@ -63,10 +63,26 @@ String displaySvg() {
   int x, y, p;
   String r = "<svg width='128' height='64' xmlns='http://www.w3.org/2000/svg'>";
   r += "<rect width='100%' height='100%' fill='black' stroke='none' />";
+
   p = rotationPosition();
   x = round(64.0f + cosArray[p] * 64.0f);
   y = round(64.0f - sinArray[p] * 64.0f);
   r += "<polyline points='64 64 " + String(x) + " " + String(y) + "' stroke='white' stroke-width='1' stroke-dasharray='1, 1' fill='none' />";
+
+  p = targetGetStart();
+  if (p >= 0) {
+    x = round(64.0f + cosArray[p] * s6s.securityPerimeter / s6s.distanceDivider);
+    y = round(64.0f - sinArray[p] * s6s.securityPerimeter / s6s.distanceDivider);
+    r += "<polyline points='64 64 " + String(x) + " " + String(y) + "' stroke='blue' stroke-width='1' stroke-dasharray='1, 1' fill='none' />";
+  }
+
+  p = targetGetEnd();
+  if (p >= 0) {
+    x = round(64.0f + cosArray[p] * s6s.securityPerimeter / s6s.distanceDivider);
+    y = round(64.0f - sinArray[p] * s6s.securityPerimeter / s6s.distanceDivider);
+    r += "<polyline points='64 64 " + String(x) + " " + String(y) + "' stroke='green' stroke-width='1' stroke-dasharray='1, 1' fill='none' />";
+  }
+
   r += "<circle cx='64' cy='64' r='" + String(int(100.0f / s6s.distanceDivider)) + "' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
   r += "<circle cx='64' cy='64' r='" + String(int(s6s.securityPerimeter / s6s.distanceDivider)) + "' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
   r += "<polyline points='";

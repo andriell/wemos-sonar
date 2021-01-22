@@ -4,7 +4,7 @@ Servo servoT;
 boolean first = true;
 
 void triggerSetup() {
-  servoT.attach(WEMOS_D5);
+  servoT.attach(WEMOS_D5, 600, 2500);
   delay(20);
   servoT.write(90);
 }

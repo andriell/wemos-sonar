@@ -4,7 +4,7 @@ boolean servoRP = true;
 
 void rotationSetup()
 {
-  servoR.attach(WEMOS_D8);
+  servoR.attach(WEMOS_D8, 600, 2500);
 }
 
 void rotationLoop() {

@@ -41,11 +41,7 @@ void targetLoop() {
 int targetGet() {
   if (targetStart > 0 && targetEnd > 0) {
     int r = (targetStart + targetEnd) / 2;
-    if (rotationDirrection()) {
-      r += s6s.adjustment;
-    } else {
-      r -= s6s.adjustment;
-    }
+    r += s6s.adjustment;
     dbg(1, "Target start: ");
     dbg(1, targetStart);
     dbg(1, " end: ");
