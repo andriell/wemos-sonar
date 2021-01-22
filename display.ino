@@ -66,7 +66,7 @@ String displaySvg() {
   p = rotationPosition();
   x = round(64.0f + cosArray[p] * 64.0f);
   y = round(64.0f - sinArray[p] * 64.0f);
-  r += "<polyline points='64 64 " + String(x) + " " + String(y) + "' stroke='white' stroke-width='1' fill='none' />";
+  r += "<polyline points='64 64 " + String(x) + " " + String(y) + "' stroke='white' stroke-width='1' stroke-dasharray='1, 1' fill='none' />";
   r += "<circle cx='64' cy='64' r='50' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
   r += "<circle cx='64' cy='64' r='25' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
   r += "<polyline points='";
