@@ -29,21 +29,10 @@ void displayLoop() {
     if (distanceArray[i] > 0) {
       x = round(64.0f + cosArray[i] * distanceArray[i] / s6s.distanceDivider);
       y = round(64.0f - sinArray[i] * distanceArray[i] / s6s.distanceDivider);
-      if (x < 0) {
-        x = 0;
-      }
-      if (x > 128) {
-        x = 128;
-      }
-      if (y < 0) {
-        y = 0;
-      }
-      if (y > 64) {
-        y = 64;
-      }
+      
       //if (!(y < 10 && (x < 20 && x > 110)) && prevX > 0 && prevY > 0) {
       if (prevX > -1 && prevY > -1) {
-        display.drawLine(prevX, prevY, x, y);
+        display.drawLine(dm(prevX, 0, 128), dm(prevY, 0, 64), dm(x, 0, 128), dm(y, 0, 64));
       }
       prevX = x;
       prevY = y;
@@ -72,6 +61,16 @@ void displayLoop() {
   //display.drawCircle(display.getWidth() / 2, display.getHeight(), 25);
   //display.drawCircle(display.getWidth() / 2, display.getHeight(), 50);
   display.display();
+}
+
+int dm(int v, int _min, int _max) {
+  if (v < _min) {
+    return _min;
+  }
+  if (v > _max) {
+    return _max;
+  }
+  return v;
 }
 
 String displaySvg() {
