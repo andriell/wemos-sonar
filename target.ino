@@ -9,7 +9,10 @@ void targetSetup() {
 }
 
 void targetLoop() {
-  if (sonarDistance() < CONFIG_SECURITY_PERIMETER) {
+  if (s6s.mode < 3) {
+    return;
+  }
+  if (sonarDistance() < s6s.securityPerimeter || rotationPosition() >= s6s.rotationMax || rotationPosition() <= s6s.rotationMin) {
     ledOn();
     beep();
     if (targetStart <= 0) {
@@ -19,7 +22,7 @@ void targetLoop() {
     }
   } else if (targetStart >= 0) {
     ledOff();
-    if (abs(rotationPosition() - targetStart) > CONFIG_MINIMAL_TARGET_SIZE) {
+    if (abs(rotationPosition() - targetStart) > s6s.minimalTargeSize) {
       targetEnd = rotationPosition();
       dbg(1, "Target end: ");
       dbgLn(1, targetEnd);

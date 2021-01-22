@@ -25,7 +25,8 @@ struct Settings {
   int mode; // m
   int rotationMin; // rm
   int rotationMax; // rx
-  int rotationStep; // rs
+  int rotationPause; // rp
+  int adjustment; // a
   int beepMode; // bm
   int laserMode; // lm
   float distanceDivider; // dd
@@ -62,11 +63,14 @@ int alarmCount = 0;
 void loop() {
   srLoop();
   dbgLoop();
+  wsLoop();
+  if (s6s.mode < 1) {
+    return;
+  }
   sonarLoop();
+  displayLoop();
   targetLoop();
   triggerLoop();
-  displayLoop();
-  // triggerFire();
   if (targetGet() >= 0) {
     rotationSetPosition(targetGet());
     laserOff();
@@ -84,7 +88,5 @@ void loop() {
     alarmCount = 0;
     rotationLoop();
   }
-
-  wsLoop();
-  delay(50);
+  delay(s6s.rotationPause);
 }

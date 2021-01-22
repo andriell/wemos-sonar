@@ -14,8 +14,11 @@ void triggerLoop() {
 }
 
 void triggerFire() {
+  if (s6s.mode < 4) {
+    return;
+  }
   float d = sonarDistance();
-  int a = targetAmendment(d);
+  int a = targetAmendment(d) + s6s.adjustment;
   int t = targetGet();
   dbg(1, "Fire. Is first: ");
   dbg(1, first);

@@ -7,7 +7,7 @@ void beepSetup() {
 }
 
 void beep(byte n) {
-  if(s6s.beepMode <= 0) {
+  if(s6s.beepMode < 1) {
     return;
   }
   for (byte i = 1; i < n; i++) {
@@ -17,14 +17,14 @@ void beep(byte n) {
 }
 
 void beep() {
-  if(s6s.beepMode <= 0) {
+  if(s6s.beepMode < 1) {
     return;
   }
   tone(BUZZER_PIN, 2000, 100);
 }
 
 void beepTime(unsigned long t) {
-  if(s6s.beepMode <= 0) {
+  if(s6s.beepMode < 1) {
     return;
   }
   tone(BUZZER_PIN, 2000, t);

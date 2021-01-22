@@ -17,11 +17,17 @@
             <td><label for="m_input">Режим</label></td>
             <td><select name="m" id="m_input">
                 <option value="0">Выключено</option>
-                <option value="1">Сканирование</option>
-                <option value="2">Охрана</option>
-                <option value="3">Стрельба</option>
+                <option value="1">Ручной</option>
+                <option value="2">Сканирование</option>
+                <option value="3">Охрана</option>
+                <option value="4">Стрельба</option>
             </select></td>
             <td><span id="m_value"></span></td>
+        </tr>
+        <tr>
+            <td><label for="a_input">Корректировка угла перед выстрелом</label></td>
+            <td><input type="number" name="a" id="a_input" min="-180" max="180"></td>
+            <td><span id="a_value"></span></td>
         </tr>
         <tr>
             <td><label for="rm_input">Минимальный угол</label></td>

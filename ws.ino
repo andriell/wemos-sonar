@@ -27,6 +27,8 @@ void ws_settings_post() {
   String jsonStr = server.arg("plain");
   settingsLoadString(jsonStr);
   settingsSave();
+  laserOff();
+  laserOn();
   server.send(200, "application/json", "{'sucsess': true}");
 }
 

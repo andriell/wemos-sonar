@@ -5,6 +5,9 @@ void laserSetup() {
 }
 
 void laserOn() {
+  if (s6s.laserMode < 1) {
+    return;
+  }
   digitalWrite(LASER_PIN, HIGH);
 }
 

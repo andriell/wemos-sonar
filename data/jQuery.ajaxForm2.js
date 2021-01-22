@@ -48,15 +48,16 @@
             $.ajax({
                 type: "POST",
                 url: url,
-                data:  JSON.stringify(data),
+                data: JSON.stringify(data),
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
                 complete: function () {
                     _self.enable();
+                    setTimeout(function () {
+                        _self.trigger('reset');
+                    }, 2000);
                 },
-                success: function (data) {
-                    _self.trigger('reset');
-                }
+                success: function (data) {}
             });
         });
         _self.on('reset', function (e) {

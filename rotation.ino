@@ -7,19 +7,21 @@ void rotationSetup()
   servoR.attach(WEMOS_D8);
 }
 
-void rotationLoop()
-{
+void rotationLoop() {
+  if (s6s.mode < 2) {
+    return;
+  }
   if (servoRP) {
     servoRPos += CONFIG_ROTATION_STEP;
-    if (servoRPos >= 180) {
+    if (servoRPos >= s6s.rotationMax) {
       servoRP = false;
-      servoRPos = 180;
+      servoRPos = s6s.rotationMax;
     }
   } else {
     servoRPos -= CONFIG_ROTATION_STEP;
-    if (servoRPos <= 0) {
+    if (servoRPos <= s6s.rotationMin) {
       servoRP = true;
-      servoRPos = 0;
+      servoRPos = s6s.rotationMin;
     }
   }
   servoR.write(servoRPos);

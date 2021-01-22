@@ -8,9 +8,10 @@ void settingsSetup() {
 String settingsSave() {
   StaticJsonDocument<SETTINGS_SIZE> doc;
   doc["m"] = s6s.mode;
+  doc["a"] = s6s.adjustment;
   doc["rm"] = s6s.rotationMin;
   doc["rx"] = s6s.rotationMax;
-  doc["rs"] = s6s.rotationStep;
+  doc["rp"] = s6s.rotationPause;
   doc["bm"] = s6s.beepMode;
   doc["lm"] = s6s.laserMode;
   doc["dd"] = s6s.distanceDivider;
@@ -54,6 +55,11 @@ void settingsLoadString(String jsonString) {
   } else {
     s6s.mode = 1;
   }
+  if (doc.containsKey("a")) {
+    s6s.adjustment = doc["a"];
+  } else {
+    s6s.adjustment = 0;
+  }
   if (doc.containsKey("rm")) {
     s6s.rotationMin = doc["rm"];
   } else {
@@ -64,10 +70,10 @@ void settingsLoadString(String jsonString) {
   } else {
     s6s.rotationMax = 180;
   }
-  if (doc.containsKey("rs")) {
-    s6s.rotationStep = doc["rs"];
+  if (doc.containsKey("rp")) {
+    s6s.rotationPause = doc["rp"];
   } else {
-    s6s.rotationStep = 50;
+    s6s.rotationPause = 50;
   }
   if (doc.containsKey("bm")) {
     s6s.beepMode = doc["bm"];
