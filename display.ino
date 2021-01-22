@@ -27,9 +27,9 @@ void displayLoop() {
     if (distanceArray[i] > 0) {
       x = round(64.0f + cosArray[i] * distanceArray[i] / s6s.distanceDivider);
       y = round(64.0f - sinArray[i] * distanceArray[i] / s6s.distanceDivider);
-      if (!(y < 10 && (x < 20 && x > 110)) && prevX > 0 && prevY > 0) {
+      //if (!(y < 10 && (x < 20 && x > 110)) && prevX > 0 && prevY > 0) {
         display.drawLine(prevX, prevY, x, y);
-      }
+      //}
       prevX = x;
       prevY = y;
     }

@@ -18,7 +18,7 @@ void triggerFire(int t) {
     return;
   }
   float d = sonarDistance();
-  int a = targetAmendment(d) + s6s.adjustment;
+  int a = targetAmendment(d);
   dbg(1, "Fire. Is first: ");
   dbg(1, first);
   dbg(1, " Target: ");

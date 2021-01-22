@@ -68,6 +68,8 @@ void loop() {
     return;
   }
   sonarLoop();
+  delay(s6s.rotationPause);
+  sonarLoop();
   displayLoop();
   targetLoop();
   triggerLoop();
@@ -88,5 +90,4 @@ void loop() {
     alarmCount = 0;
     rotationLoop();
   }
-  delay(s6s.rotationPause);
 }

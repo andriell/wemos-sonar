@@ -50,3 +50,7 @@ void rotationSetPosition(int p) {
 int rotationPosition() {
   return servoRPos;
 }
+
+boolean rotationDirrection() {
+  return servoRP;
+}
