@@ -103,6 +103,20 @@ select {
     -webkit-box-shadow: none;
 }
 
+.form-style-1 input[type=button].red-button {
+    background: #af4d4d;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+}
+
+.form-style-1 input[type=button].red-button:hover {
+    background: #a34848;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
 .form-style-1 .required {
     color: red;
 }

@@ -3,9 +3,9 @@
         var _self = this;
         // This is the easiest way to have default options.
         var settings = $.extend({
-            validator: function (e) {
-
-            }
+            validator: function (e) {},
+            beforeLoadData: function (e) {},
+            afterLoadData: function (e) {}
         }, options);
 
         _self.getFormData = function () {
@@ -68,6 +68,7 @@
                 type: "GET",
                 url: url,
                 success: function (data) {
+                    settings.beforeLoadData(data);
                     for (var name in data) {
                         var inputObject = _self.find('[name="' + name + '"]');
                         if (!inputObject) {
@@ -95,6 +96,7 @@
                             }
                         }
                     }
+                    settings.afterLoadData(data);
                 },
                 complete: function () {
                     _self.enable();

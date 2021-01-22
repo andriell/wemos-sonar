@@ -26,13 +26,13 @@
   </tr>
   <tr>
     <td><input id="p1" type="button" value="+1"> <input id="p5" type="button" value="+5"></td>
-    <td style="text-align: center"><input id="f" type="button" value="Огонь!"></td>
+    <td style="text-align: center"><input id="f" type="button" value="Огонь!" class="red-button"></td>
     <td style="text-align: right"><input id="m5" type="button" value="-5"> <input id="m1" type="button" value="-1"></td>
   </tr>
 </table>
 
 <form method="post" action="settings.json">
-  <table>
+  <table id="settings">
     <tr>
       <td><label for="m_input">Режим</label></td>
       <td><select name="m" id="m_input">
@@ -60,9 +60,9 @@
       <td><span id="rx_value"></span></td>
     </tr>
     <tr>
-      <td><label for="rs_input">Пауза между сканированиями (мс)</label></td>
-      <td><input type="number" name="rs" id="rs_input" min="0" max="1000"></td>
-      <td><span id="rs_value"></span></td>
+      <td><label for="rp_input">Пауза между сканированиями (мс)</label></td>
+      <td><input type="number" name="rp" id="rp_input" min="0" max="1000"></td>
+      <td><span id="rp_value"></span></td>
     </tr>
     <tr>
       <td><label for="bm_input">Звук</label></td>
@@ -97,10 +97,9 @@
     </tr>
 
     <tr>
-      <td colspan="3" style="text-align: right">
-        <input type="reset" name="" value="Обновить">
-        <input type="submit" name="" value="Отправить">
-      </td>
+      <td><input type="reset" name="" value="Обновить"></td>
+      <td></td>
+      <td style="text-align: right"><input type="submit" name="" value="Сохранить"></td>
     </tr>
   </table>
 </form>
@@ -110,21 +109,18 @@
 </div>
 <script type="text/javascript">
     jQuery(function ($) {
-        $('form').formAjax2();
+        var m_input = $('#m_input');
+        $('form').formAjax2({
+            afterLoadData: function (data) {
+                m_input.trigger('change');
+            }
+        });
 
         setInterval(function () {
             $("#img_sonar").attr("src", "sonar.svg?" + new Date().getTime());
         }, 1000);
 
         // <editor-fold desc="controller">
-        $('#m_input').on('change', function () {
-            var val = parseInt($(this).find(":selected").val());
-            if (val === 1) {
-                $('#controller').removeClass('hidden');
-            } else {
-                $('#controller').addClass('hidden');
-            }
-        });
         var controllerAngle = $('#c_a');
         var controllerInputs = $('.controller input');
         $('#p1').on('click', function () {
@@ -169,7 +165,6 @@
                 }
             });
         });
-
         controllerAngle.on('change', function () {
             var v = 180 - parseInt(controllerAngle.val());
             $("#c_a_value").html(v + "&#176;");
@@ -183,6 +178,14 @@
                 }
             });
         });
+        m_input.on('change', function () {
+            var val = parseInt($(this).find(":selected").val());
+            if (val === 1) {
+                $('#controller').removeClass('hidden');
+            } else {
+                $('#controller').addClass('hidden');
+            }
+        }).trigger('change');
         //</editor-fold>
     })
 </script>
