@@ -22,14 +22,14 @@ void displayLoop() {
   distanceArray[i] = sonarDistance();
 
   display.clear();
-  int x, y;
-  int prevX = -1; 
+  int x, y, p;
+  int prevX = -1;
   int prevY = -1;
   for (int i = 0; i <= 180; i++) {
     if (distanceArray[i] > 0) {
       x = round(64.0f + cosArray[i] * distanceArray[i] / s6s.distanceDivider);
       y = round(64.0f - sinArray[i] * distanceArray[i] / s6s.distanceDivider);
-      
+
       //if (!(y < 10 && (x < 20 && x > 110)) && prevX > 0 && prevY > 0) {
       if (prevX > -1 && prevY > -1) {
         display.drawLine(dm(prevX, 0, 128), dm(prevY, 0, 64), dm(x, 0, 128), dm(y, 0, 64));
@@ -48,10 +48,28 @@ void displayLoop() {
     }
   }
 
-  for (float i = 0; i <= 64.0f; i = i + 5.0f) {
-    int p = rotationPosition();
-    x = float(64.0f + cosArray[p] * i);
-    y = float(64.0f - sinArray[p] * i);
+  p = targetGetStart();
+  if (p >= 0) {
+    for (float i = 0; i <= s6s.securityPerimeter / s6s.distanceDivider; i = i + 5.0f) {
+      x = round(64.0f + cosArray[p] * i);
+      y = round(64.0f - sinArray[p] * i);
+      display.setPixel(x, y);
+    }
+  }
+
+  p = targetGetEnd();
+  if (p >= 0) {
+    for (float i = 0; i <= s6s.securityPerimeter / s6s.distanceDivider; i = i + 5.0f) {
+      x = round(64.0f + cosArray[p] * i);
+      y = round(64.0f - sinArray[p] * i);
+      display.setPixel(x, y);
+    }
+  }
+
+  p = rotationPosition();
+  for (float i = 0; i <= 64.0f; i = i + 2.0f) {
+    x = round(64.0f + cosArray[p] * i);
+    y = round(64.0f - sinArray[p] * i);
     display.setPixel(x, y);
   }
 
@@ -98,7 +116,7 @@ String displaySvg() {
   }
 
   r += "<circle cx='64' cy='64' r='" + String(int(100.0f / s6s.distanceDivider)) + "' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
-  r += "<circle cx='64' cy='64' r='" + String(int(s6s.securityPerimeter / s6s.distanceDivider)) + "' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
+  r += "<circle cx='64' cy='64' r='" + String(int(s6s.securityPerimeter / s6s.distanceDivider)) + "' stroke='red' stroke-width='1' fill='none' stroke-dasharray='2, 5' />";
   r += "<polyline points='";
   for (int i = 0; i <= 180; i++) {
     if (distanceArray[i] > 0) {

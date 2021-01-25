@@ -1,10 +1,5 @@
 #define SETTINGS_SIZE 512
 
-void settingsSetup() {
-  settingsLoadFile();
-  //settingsSave();
-}
-
 String settingsSave() {
   StaticJsonDocument<SETTINGS_SIZE> doc;
   doc["m"] = s6s.mode;

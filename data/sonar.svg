@@ -1,15 +1,13 @@
 <svg width='128' height='64' xmlns='http://www.w3.org/2000/svg'>
-    <rect width='100%' height='100%' fill='black' stroke='none' />
-    <polyline points='64 64 0 0' stroke='white' stroke-width='1' stroke-dasharray='1, 1' fill='none' />
-
-    <circle cx='64' cy='64' r='50' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />
-    <circle cx='64' cy='64' r='25' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5' />
-
-    <polyline points='0 20 10 10 16 10 32 15 33 50 34 20 35 15 40 10 50 20' stroke='white' stroke-width='1' fill='none' />
-
-    <rect width='25' height='8' fill='black' stroke='none' />
-    <text x='0' y='8' fill='white' font-size='8' font-family='Arial'>123.56</text>
-
-    <rect x='108' width='25' height='8' fill='black' stroke='none' />
-    <text x='108' y='8' fill='white' font-size='8' font-family='Arial'>100%</text>
+    <rect width='100%' height='100%' fill='black' stroke='none'/>
+    <polyline points='64 64 128 56' stroke='white' stroke-width='1' stroke-dasharray='1, 1' fill='none'/>
+    <circle cx='64' cy='64' r='50' stroke='white' stroke-width='1' fill='none' stroke-dasharray='2, 5'/>
+    <circle cx='64' cy='64' r='25' stroke='red' stroke-width='1' fill='none' stroke-dasharray='2, 5'/>
+    <polyline
+            points='152 64 1338 42 1338 20 1337 -3 1335 -25 1334 -47 1331 -69 1329 -91 1326 -113 1323 -135 1319 -157 1315 -179 1311 -201 1306 -223 1301 -244 113 51 112 50 112 49 111 49 110 48 110 47 110 46 109 46 109 45 109 44 108 43 108 42 107 42 107 41 106 41 106 40 105 39 105 38 105 38 104 37 104 36 103 36 103 35 102 34 101 34 101 33 100 32 100 32 100 31 99 31 98 30 97 29 97 29 96 28 96 28 95 27 95 26 94 26 93 26 93 25 92 24 91 24 90 23 90 23 89 22 88 22 87 22 87 21 86 21 85 20 84 20 84 19 83 19 82 19 82 18 81 18 80 18 79 17 78 17 78 17 77 17 76 16 75 16 74 16 73 15 73 15 72 14 71 14 70 14 69 14 68 13 69 -8 68 -7 66 -7 65 -8 64 -7 63 -7 62 -7 60 -7 59 -8 58 -7 57 -7 55 -7 54 -6 53 -6 52 -6 50 -6 49 -6 48 -5 47 -5 51 16 50 16 49 16 49 17 48 18 47 18 47 19 46 19 45 19 44 19 43 20 43 20 42 20 41 21 40 21 40 22 39 22 38 23 38 23 37 23 36 24 36 25 35 25 34 26 34 27 33 27 32 28 32 28 31 29 30 29 30 30 29 31 29 31 28 32 28 32 27 33 26 34 26 34 25 35 25 36 25 36 24 37 24 38 23 38 22 39 22 40 22 41 21 41 21 42 20 43 20 43 20 44 19 45 19 46 19 47 18 47 18 48 17 49 17 50 17 50 17 51 16 52 16 53 16 54 16 55 16 55 15 56 15 57 15 58 -1204 -69 -1206 -47 -1207 -25 -1209 -3 -1210 20 -1210 42 -1211 64 '
+            stroke='white' stroke-width='1' fill='none'/>
+    <rect width='25' height='8' fill='black' stroke='none'/>
+    <text x='0' y='8' fill='white' font-size='8' font-family='Arial'>2549.48</text>
+    <rect x='108' width='25' height='8' fill='black' stroke='none'/>
+    <text x='108' y='8' fill='white' font-size='8' font-family='Arial'>99%</text>
 </svg>

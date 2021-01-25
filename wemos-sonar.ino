@@ -53,9 +53,11 @@ void setup() {
   laserSetup();
   displaySetup();
   targetSetup();
-  settingsSetup();
   wsSetup();
   laserOn();
+
+  settingsLoadFile();
+  rotationSetPosition(s6s.rotationMin);
 }
 
 int alarmCount = 0;
