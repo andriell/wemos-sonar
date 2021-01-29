@@ -4,11 +4,11 @@
 
 ## 3D Model
 
-![Scorpion 2](data/sonar.jpg)
+![Scorpio 2](data/sonar.jpg)
 
 ## Connection diagram
 
-![Scorpion 2](fritzing/sonar_bb.png)
+![Scorpio 2](fritzing/sonar_bb.png)
 
 ## How to flash
 
