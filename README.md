@@ -1,4 +1,4 @@
-# Scorpion 2
+# Scorpio 2
 
 ## Video
 
