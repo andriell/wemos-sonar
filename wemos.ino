@@ -18,8 +18,3 @@ void wemosSetup() {
     Serial.println("Flash Chip configuration ok.\n");
   }
 }
-
-String ipToString(IPAddress ip){
-  String s = "" + String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3]);
-  return s;
-}

@@ -1,4 +1,4 @@
-/* Настройки IP адреса */
+// Web Server
 IPAddress local_ip(192, 168, 1, 1);
 IPAddress gateway(192, 168, 1, 1);
 IPAddress subnet(255, 255, 255, 0);
@@ -6,7 +6,7 @@ IPAddress subnet(255, 255, 255, 0);
 ESP8266WebServer server(80);
 
 void wsSetup() {
-  WiFi.softAP(CONFIG_WEBSERVER_SSID, CONFIG_WEBSERVER_PASSWORD);
+  WiFi.softAP(CONST_WEBSERVER_SSID, CONST_WEBSERVER_PASSWORD);
   WiFi.softAPConfig(local_ip, gateway, subnet);
   delay(100);
 

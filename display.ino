@@ -1,5 +1,3 @@
-
-
 SH1106Wire display(0x3C, WEMOS_D1, WEMOS_D2);
 
 float distanceArray[181];
@@ -136,7 +134,8 @@ String displaySvg() {
 
 int displayLogPosition = 0;
 
-// Вывод строчки лога на экран
+// Вывод строки лога на экран
+// Displaying the log line on the screen
 void displayLog(String s) {
   dbgLn(2, s);
   if (displayLogPosition > 5) {

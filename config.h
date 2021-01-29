@@ -1,4 +1,0 @@
-#define CONFIG_ROTATION_STEP 1
-
-const char* CONFIG_WEBSERVER_SSID = "Sonar";
-const char* CONFIG_WEBSERVER_PASSWORD = "12345678";

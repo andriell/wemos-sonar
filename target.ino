@@ -12,29 +12,46 @@ void targetLoop() {
   if (s6s.mode < 3) {
     return;
   }
-  if (sonarDistance() < s6s.securityPerimeter || rotationPosition() >= s6s.rotationMax || rotationPosition() <= s6s.rotationMin) {
+
+  if (sonarDistance() < s6s.securityPerimeter) {
     ledOn();
     beep();
     if (targetStart <= 0) {
       targetStart = rotationPosition();
       dbg(1, "Target start: ");
       dbgLn(1, targetStart);
-    }
-  } else if (targetStart >= 0) {
-    ledOff();
-    if (abs(rotationPosition() - targetStart) > s6s.minimalTargeSize) {
-      targetEnd = rotationPosition();
-      dbg(1, "Target end: ");
-      dbgLn(1, targetEnd);
-    } else {
-      dbg(1, "Target is too small. Start: ");
-      dbg(1, targetStart);
-      dbg(1, " end: ");
-      dbgLn(1, rotationPosition());
-      targetStart = -1;
+    } else if (rotationPosition() >= s6s.rotationMax || rotationPosition() <= s6s.rotationMin) {
+      if (abs(rotationPosition() - targetStart) > s6s.minimalTargeSize) {
+        targetEnd = rotationPosition();
+        dbg(1, "Target end: ");
+        dbgLn(1, targetEnd);
+      } else {
+        dbg(1, "Target is too small. Start: ");
+        dbg(1, targetStart);
+        dbg(1, " end: ");
+        dbgLn(1, rotationPosition());
+        targetStart = -1;
+      }
     }
   } else {
-    targetEnd = -1;
+    ledOff();
+    if (targetStart >= 0 && targetEnd < 0) {
+      if (abs(rotationPosition() - targetStart) > s6s.minimalTargeSize) {
+        targetEnd = rotationPosition();
+        dbg(1, "Target end: ");
+        dbgLn(1, targetEnd);
+      } else {
+        dbg(1, "Target is too small. Start: ");
+        dbg(1, targetStart);
+        dbg(1, " end: ");
+        dbgLn(1, rotationPosition());
+        targetStart = -1;
+      }
+    }
+    if (targetStart >= 0 && targetEnd >= 0 ) {
+      targetStart = -1;
+      targetEnd = -1;
+    }
   }
 }
 

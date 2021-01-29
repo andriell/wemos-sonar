@@ -1,4 +1,3 @@
-// http://greenlightgo.org/projects/midi-to-arduino/#output
 const int BUZZER_PIN = WEMOS_D3;
 
 void beepSetup() {

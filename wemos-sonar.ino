@@ -2,11 +2,13 @@
 #include <ESP8266WebServer.h>
 #include <FS.h>
 #include <Wire.h>
-#include "SH1106Wire.h" // ESP8266 and ESP32 OLED driver for SSD1306 displays
-#include <ArduinoJson.h> // ArduinoJson
+#include "SH1106Wire.h" // Library: ESP8266 and ESP32 OLED driver for SSD1306 displays
+#include <ArduinoJson.h> // Library: ArduinoJson
 #include <Servo.h>
 #include "const.h"
 #include "config.h"
+
+#define MAX_UL       0xFFFFFFFFUL
 
 #define WEMOS_A0     17
 #define WEMOS_D0     16
@@ -21,6 +23,8 @@
 #define WEMOS_TX     1
 #define WEMOS_RX     3
 
+
+
 struct Settings {
   int mode; // m
   int rotationMin; // rm
@@ -34,7 +38,12 @@ struct Settings {
   int minimalTargeSize; // mts
 };
 
+// s6s is settings like i18n is internationalization
 Settings s6s;
+
+unsigned long mainMillis() {
+  return  millis() + (MAX_UL - 30000UL);
+}
 
 void setup() {
   wemosSetup();
@@ -63,14 +72,13 @@ void setup() {
 int alarmCount = 0;
 
 void loop() {
+  unsigned long startMillis = mainMillis();
   srLoop();
   dbgLoop();
   wsLoop();
   if (s6s.mode < 1) {
     return;
   }
-  sonarLoop();
-  delay(s6s.rotationPause);
   sonarLoop();
   displayLoop();
   targetLoop();
@@ -91,5 +99,17 @@ void loop() {
   } else {
     alarmCount = 0;
     rotationLoop();
+  }
+
+  unsigned long endMillis = mainMillis();
+  unsigned long executionTime;
+  if (endMillis < startMillis) {
+    executionTime = MAX_UL - startMillis;
+    executionTime += endMillis + 1;
+  } else {
+    executionTime = endMillis - startMillis;
+  }
+  if (executionTime < s6s.rotationPause) {
+    delay(s6s.rotationPause - executionTime);
   }
 }

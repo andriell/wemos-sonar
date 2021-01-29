@@ -1,3 +1,11 @@
+#define CONST_ROTATION_STEP 1
+// время ожидание ответа
+// waiting time for a response
+#define CONST_WAITING_TIME 500000ul
+
+const char* CONST_WEBSERVER_SSID = "Sonar";
+const char* CONST_WEBSERVER_PASSWORD = "12345678";
+
 const String const_str_empty = String("");
 const String const_str_dbg = String("dbg");
 

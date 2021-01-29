@@ -15,7 +15,7 @@
 
 <table id="controller" class="controller hidden" style="width: 100%; padding-bottom: 60px;">
   <tr>
-    <td><label for="c_a">Угол</label></td>
+    <td><label for="c_a">Angle</label></td>
     <td style="text-align: center"><span id="c_a_value" style="font-size: 200%">90&#176;</span></td>
     <td></td>
   </tr>
@@ -34,72 +34,72 @@
 <form method="post" action="settings.json">
   <table id="settings">
     <tr>
-      <td><label for="m_input">Режим</label></td>
+      <td><label for="m_input">Mode</label></td>
       <td><select name="m" id="m_input">
-        <option value="0">Выключено</option>
-        <option value="1">Ручной</option>
-        <option value="2">Сканирование</option>
-        <option value="3">Охрана</option>
-        <option value="4">Стрельба</option>
+        <option value="0">Turned off</option>
+        <option value="1">Manual</option>
+        <option value="2">Scanning</option>
+        <option value="3">Protection</option>
+        <option value="4">Firing</option>
       </select></td>
       <td><span id="m_value"></span></td>
     </tr>
     <tr>
-      <td><label for="a_input">Корректировка угла перед выстрелом</label></td>
+      <td><label for="a_input">Pre-shot angle correction</label></td>
       <td><input type="number" name="a" id="a_input" min="-180" max="180"></td>
       <td><span id="a_value"></span></td>
     </tr>
     <tr>
-      <td><label for="rm_input">Минимальный угол</label></td>
+      <td><label for="rm_input">Minimum angle</label></td>
       <td><input type="number" name="rm" id="rm_input" min="0" max="180"></td>
       <td><span id="rm_value"></span></td>
     </tr>
     <tr>
-      <td><label for="rx_input">Максимальный угол</label></td>
+      <td><label for="rx_input">Maximum angle</label></td>
       <td><input type="number" name="rx" id="rx_input" min="0" max="180"></td>
       <td><span id="rx_value"></span></td>
     </tr>
     <tr>
-      <td><label for="rp_input">Пауза между сканированиями (мс)</label></td>
+      <td><label for="rp_input">Pause between scans (ms)</label></td>
       <td><input type="number" name="rp" id="rp_input" min="0" max="1000"></td>
       <td><span id="rp_value"></span></td>
     </tr>
     <tr>
-      <td><label for="bm_input">Звук</label></td>
+      <td><label for="bm_input">Sound</label></td>
       <td><select name="bm" id="bm_input">
-        <option value="0">Выключено</option>
-        <option value="1">Включено</option>
+        <option value="0">Turned off</option>
+        <option value="1">Turned on</option>
       </select></td>
       <td><span id="bm_value"></span></td>
     </tr>
     <tr>
-      <td><label for="lm_input">Лазер</label></td>
+      <td><label for="lm_input">Laser</label></td>
       <td><select name="lm" id="lm_input">
-        <option value="0">Выключено</option>
-        <option value="1">Включено</option>
+        <option value="0">Turned off</option>
+        <option value="1">Turned on</option>
       </select></td>
       <td><span id="lm_value"></span></td>
     </tr>
     <tr>
-      <td><label for="dd_input">Масштаб (см/px)</label></td>
+      <td><label for="dd_input">Scale (cm/px)</label></td>
       <td><input type="number" name="dd" id="dd_input" min="0" max="100"></td>
       <td><span id="dd_value"></span></td>
     </tr>
     <tr>
-      <td><label for="sp_input">Охранная зона (см)</label></td>
+      <td><label for="sp_input">Security zone (cm)</label></td>
       <td><input type="number" name="sp" id="sp_input" min="10" max="1000"></td>
       <td><span id="sp_value"></span></td>
     </tr>
     <tr>
-      <td><label for="mts_input">Минимальный размер цели</label></td>
+      <td><label for="mts_input">Minimum target size</label></td>
       <td><input type="number" name="mts" id="mts_input" min="1" max="180"></td>
       <td><span id="mts_value"></span></td>
     </tr>
 
     <tr>
-      <td><input type="reset" name="" value="Обновить"></td>
+      <td><input type="reset" name="" value="Refresh"></td>
       <td></td>
-      <td style="text-align: right"><input type="submit" name="" value="Сохранить"></td>
+      <td style="text-align: right"><input type="submit" name="" value="Save"></td>
     </tr>
   </table>
 </form>

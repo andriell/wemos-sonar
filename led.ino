@@ -1,5 +1,7 @@
 void ledSetup() {
-  pinMode(WEMOS_D4_LED, OUTPUT);  // initialize onboard LED as output
+  // инициализировать встроенный светодиод как выход
+  // initialize onboard LED as output
+  pinMode(WEMOS_D4_LED, OUTPUT);
 }
 
 void ledBlink(int n, unsigned long d) {
