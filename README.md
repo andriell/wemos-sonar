@@ -2,6 +2,8 @@
 
 ## Video
 
+[![Watch the video](img/video.png)](https://youtu.be/0uNzd1tjwxU)
+
 ## 3D Model
 
 ![Scorpio 2](data/sonar.jpg)
@@ -13,6 +15,8 @@
 ## How to flash
 
 Download and install Arduino ESP8266 filesystem uploader plugin following the instructions on this page: https://github.com/esp8266/arduino-esp8266fs-plugin
+
+Remove the "data/index.html" file and rename "data/en.html" to "data/index.html"
 
 Before uploading the firmware via Arduino IDE, first execute the command Select Tools > ESP8266 Sketch Data Upload
 
